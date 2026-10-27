@@ -1,6 +1,6 @@
 # Secure Infrastructure Lab (Secure-infra-lab)
 
-<img title="" src="diagrams/Diagram%281%29.png" alt="diagram" width="1072" />
+![diagram](sources/Diagram%281%29.png)
 
 ## Overview
 
