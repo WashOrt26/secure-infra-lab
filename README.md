@@ -154,4 +154,24 @@ then open your web browser an go to `http://10.0.12.2`
 
 if you see the welcome page "Welcome to nginx!" that means everything is working. The bassic routing between the LAN network (172.16.12.0/24) and the DMZ network (10.0.12.0/24) across the router is successfully working.
 
+## Network valitation and connectivity test
 
+Once the static IP configurations (Netplan for Ubuntu DMZ and TCP/IPv4 for Windows LAN) and routing across the pfSense router were established, a cross-subnet connectivity test was performed to validate traffic flow between the **Internal LAN** (`172.16.12.0/24`) and the **DMZ** (`10.0.12.0/24`).
+
+![packetracerdiagram](sources/packettracerdiagram.png)
+
+
+
+### 1. Layer 3 Validation (ICMP / Ping)
+
+From the Windows Server endpoint (`172.16.12.2`), a ping test was successfully executed toward the Ubuntu Server DMZ IP (`10.0.12.2`) to verify basic reachability:
+
+```cmd
+ping 10.0.12.2
+```
+
+### 2. Layer 7 Validation (HTTP / Nginx)
+
+An Nginx web server was deployed on the Ubuntu Server in the DMZ zone. Accessing `http://10.0.12.2` from the web browser on the Windows Server successfully rendered the default Nginx welcome page.
+
+This confirms that inter-subnet routing and basic communication across zones are fully operational.
